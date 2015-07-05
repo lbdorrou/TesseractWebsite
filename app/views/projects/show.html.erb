@@ -1,0 +1,127 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="row half" style=" background-color: #000; overflow: hidden; padding-left: 0px">
+    <div class="col-md-12" style="padding: 0">
+      <div class="owl-carousel ">
+        <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg" data-src="<%= @project.mainImg.url %>"  alt=""></div>
+
+        <% if @project.img1? %>
+            <div class="item  half loading" style="overflow: hidden;"><img class="owl-lazy halfImg"  data-src="<%= @project.img1.url %>"  alt=""></div>
+        <% end %>
+        <% if @project.img2? %>
+            <div class="item  half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img2.url %>" alt=""></div>
+        <% end %>
+        <% if @project.img3? %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img3.url %>" alt=""></div>
+        <% end %>
+        <% if @project.img4? %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img4.url %>" alt=""></div>
+        <% end %>
+        <% if @project.img5? %>
+            <div class="item half loading" style="overflow: hidden;  "><img class="owl-lazy halfImg"  data-src="<%= @project.img5.url %>" alt=""></div>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row dark"  style="padding-left: 0; border-top: solid 1px #000; ">
+    <h1 class="center"><%= @project.title %></h1>
+  </div>
+  <div class="row dark"  style="padding-left: 0">
+    <h3 class="center"><%= @project.category %></h3>
+  </div>
+
+
+
+  <div class="row light" style="padding-top: 30px; padding-bottom: 30px; border-top: solid 1px #000;  min-height: 100vh;" >
+
+    <div class="col-lg-2 col-md-3" >
+      <h2>Publish Date</h2>
+      <% if @project.inProgress %>
+            In Development
+      <% else %>
+          <%= @project.pubDate.strftime("%B")  %>  <%= @project.pubDate.strftime("%Y")  %>
+      <% end %>
+        <hr>
+      <% if !@project.location.blank? %>
+          <h2>Location</h2>
+          <%= @project.location %>
+          <hr>
+      <% end %>
+      <% if !@project.client.blank? %>
+          <h2>Clients</h2>
+          <%= @project.client %>
+          <hr>
+      <% end %>
+      <% if !@project.collaborators.blank? %>
+          <h2>Collaborators</h2>
+          <%= @project.collaborators %>
+          <hr>
+      <% end %>
+      <% if !@project.playLink.blank? %>
+          <h2>Website</h2>
+            <a href="<%= @project.playLink %>" target="_blank">Link</a>
+
+          <hr>
+      <% end %>
+      <% if !@project.aux.blank? %>
+
+          <h2><%= @project.auxTitle %></h2>
+          <%= @project.aux.html_safe %>
+          <hr>
+      <% end %>
+
+
+      <% if can? :update, @project %><%= link_to 'Edit', edit_project_path(@project) %><%end%> <% if can? :delete, @project %> | <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> <i class="fa fa-exclamation-triangle"></i><%end%>
+
+    </div>
+
+
+    <div class="col-lg-6 col-md-7" >
+
+     <%= @project.summary.html_safe %>
+    </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                1000:{
+                    items:2
+                },
+                1300:{
+                    items:3
+                },
+                2000:{
+                    items:4
+                }
+            },
+            lazyLoad:true,
+            loop:true,
+            
+            margin:3,
+            autoplaySpeed: 2000,
+            autoplay:true,
+            autoplayTimeout:3500,
+            autoplayHoverPause:true
+        });
+    });
+
+
+</script>

@@ -1,0 +1,120 @@
+
+<!-- FOOTER --><footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 id="footer-logo"><a href="http://uark.edu">UNIVERSITY OF ARKANSAS</a></h3>
+        <ul id="footer-global-links" class="list-unstyled">
+          <li><a href="http://www.uark.edu/admissions/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'Admissions']);">Admissions</a></li>
+          <li><a href="http://www.uark.edu/academics/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'Academics']);">Academics</a></li>
+          <li><a href="http://www.uark.edu/campus-life/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'Campus Life']);">Campus Life</a></li>
+          <li><a href="http://www.uark.edu/research/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'Research']);">Research</a></li>
+          <li><a href="http://www.uark.edu/athletics/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'Athletics']);">Athletics</a></li>
+          <li><a href="http://www.uark.edu/about/index.php" onclick="_sz.push(['event', 'footer-global-links', 'click', 'About']);">About</a></li>
+        </ul>
+
+        <hr />
+        <div class="row">
+          <div class="col-sm-3"><i class="fa fa-map-marker pull-left"></i>
+            <address>
+              1 University of Arkansas<br>
+              Fayetteville, AR 72701<br>
+              479-575-2000
+            </address>
+            <a title="View Campus Maps" href="http://campusmaps.uark.edu/"><img class="img-responsive" src="http://www.uark.edu/_resources/img/map.png" alt="Map of University of Arkansas Campus" /></a></div>
+          <div class="col-sm-3 footer-news">
+            <h4><a title="Arkansas Newswire" href="http://news.uark.edu/">NEWS</a></h4>
+            <ul id="newsFooter"></ul>
+            <script>
+                $(function () {
+                    parseNews('http://news.uark.edu/RSSFeeds/Feed?Type=RSS&FbyC=1&com=1');
+                    parseNews1('http://news.uark.edu/RSSFeeds/Feed?Type=RSS&FbyC=1&com=4');
+
+                });
+
+                function parseNews(url) {
+                    $.ajax({
+                        url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=3&callback=?&q=' + encodeURIComponent(url),
+                        dataType: 'json',
+                        success: function (data) {
+                            var list_data = '';
+                            $.each(data.responseData.feed.entries, function () {
+                                var headline = this.title;
+                                headline = headline.replace("â€˜","'").replace("â€™","'").replace("â€œ","\"").replace("â€","\"");
+                                var link =  this.link;
+                                list_data += '<li><a href="' + link + '" >' + headline + '</a></li>';
+                            })
+                            $(list_data).appendTo("#newsFooter");
+                        }
+                    });
+
+                }
+
+                function parseNews1(url) {
+                    $.ajax({
+                        url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=3&callback=?&q=' + encodeURIComponent(url),
+                        dataType: 'json',
+                        success: function (data) {
+                            var list_data = '';
+                            $.each(data.responseData.feed.entries, function () {
+                                var headline = this.title;
+                                var link =  this.link;
+                                list_data += '<li><a href="' + link + '" >' + headline + '</a></li>';
+                            })
+                            $(list_data).appendTo("#newsFooter");
+                        }
+                    });
+
+                }
+            </script>
+            <script>
+                $(function ()
+                {
+                    parseEvents('http://calendars.uark.edu/RSSSyndicator.aspx?type=N&amp;category=32-0&amp;numdays=7&amp;binary=Y&amp;rssid=25');
+                });
+
+                function parseEvents(url)
+                {
+                    $.ajax({
+                        url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=3&callback=?&q=' + encodeURIComponent(url),
+                        dataType: 'json',
+                        cache: 'true',
+                        success: function (data)
+                        {
+                            var list_data = '';
+                            $.each(data.responseData.feed.entries, function ()
+                            {
+                                var headline = this.title;
+                                var link = this.link;
+                                list_data += '<li><a href="' + link + '">' + headline + '</a></li>';
+                            })
+
+                            $(list_data).appendTo("#eventsFooter");
+                        }
+                    });
+
+                }
+            </script>
+          </div>
+          <div class="col-sm-3 footer-events">
+            <h4><a title="Calendar Events" href="http://calendars.uark.edu/">EVENTS</a></h4>
+            <ul id="eventsFooter"></ul>
+          </div>
+          <div class="col-sm-3 footer-buttons"><a class="btn btn-default btn-lg" href="https://application.uark.edu/"  onclick="_sz.push(['event', 'footer-buttons', 'click', 'APPLY Online']);"><i class="fa fa-check fa fa-large"></i> <strong>APPLY</strong> Online</a>
+            <a class="btn btn-default btn-lg" href="http://visit.uark.edu/" onclick="_sz.push(['event', 'footer-buttons', 'click', 'Schedule a VISIT']);"><i class="fa fa-calendar fa fa-large"></i> Schedule a&nbsp;<strong>VISIT</strong></a>
+            <a class="btn btn-default btn-lg" href="https://onlinegiving.uark.edu/" onclick="_sz.push(['event', 'footer-buttons', 'click', 'Make a Gift']);"><i class="fa fa-gift fa fa-large"></i> Make a <strong>Gift</strong></a>
+
+          </div>
+        </div>
+        <hr />
+        <ul class="centered-nav vertical-divide list-unstyled footer-disclaimer">
+          <li><a href="http://emergency.uark.edu/"  onclick="_sz.push(['event', 'footer-disclaimer', 'click', 'Emergency Information']);">Emergency Information</a></li>
+          <li><a href="http://vcfa.uark.edu/fraud-prevention/index.php" onclick="_sz.push(['event', 'footer-disclaimer', 'click', 'Fraud Prevention']);">Fraud Prevention</a></li>
+          <li><a href="http://www.uark.edu/privacy-policy.php" onclick="_sz.push(['event', 'footer-disclaimer', 'click', 'Privacy Policy']);">Privacy Policy</a></li>
+          <li><a href="http://www.uark.edu/contact-us.php" onclick="_sz.push(['event', 'footer-disclaimer', 'click', 'Contact Us']);">Contact Us</a></li>
+          <li><a href="http://m.uark.edu" onclick="_sz.push(['event', 'footer-disclaimer', 'click', 'Mobile']);">Mobile</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

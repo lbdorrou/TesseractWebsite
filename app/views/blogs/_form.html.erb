@@ -1,0 +1,88 @@
+<%= form_for(@blog) do |f| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <label>Summary (Max: 80 char)</label>
+            <%= f.text_area :tagLine, class: "form-control"  %>
+          </div>
+            <div class="form-group">
+              <label>Type</label>
+            <%= f.collection_select :isType, Blog::ISTYPE, :to_s, :humanize,{}, {:class => 'form-control'} %>
+            </div>
+
+        </div>
+        <div class="col-md-5">
+
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.label "Main Image (Required)" %>
+          <%= f.file_field :mainImg , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @blog.mainImg? %>
+            <%= image_tag @blog.mainImg.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+            <div class="form-group">
+              <%= f.cktext_area :content,:value => @blog.content%>
+            </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <p>This is not implemented in the view yet. Please fill this out so that your entry will be future compatible.</p>
+        <div class="form-group">
+          <%= f.label "Tags (Separated by commas)" %>
+          <%= f.text_field :tags , class: "form-control" %>
+        </div>
+      </div>
+   </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <p>Are you ready for this to be displayed? Leave unpublished to come back later and finish.</p>
+        <label>Published</label>
+        <%= f.check_box :show %>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <%= f.submit "Submit", class: 'btn' %>
+          </div>
+      </div>
+    </div>
+    <hr>
+<% end %>

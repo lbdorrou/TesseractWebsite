@@ -1,0 +1,51 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="row dark" style="overflow: hidden; padding-left: 0;">
+      <h1 class="center" >PROJECTS</h1>
+  </div>
+
+
+
+
+
+
+    <% @projects.each do |projectSet| %>
+      <% if !projectSet.empty? %>
+
+        <div class="row transparent" style=" overflow: hidden; padding: 0">
+            <h1 class="blackBack"><%= projectSet.first.category %></h1>
+        </div>
+
+      <div class="row transparent">
+
+        <% projectSet.each do |project| %>
+            <% if project.show or can? :update, project %>
+
+            <a href="<%= project_path(project) %>">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 hoverDiv" style=" overflow: hidden; height: 40vh; padding: 10px 10px 10px 10px; ">
+                  <div  style="height: 100%; border: solid 1px #000; overflow: hidden" ><%= image_tag project.mainImg.url, alt: "", lazy: true, :class => "fullImg" %></div>
+                  <h2 class="center" style="position: absolute; top: 15%;"><%= project.title %></h2>
+
+                  <h4 class="center" style=" position: absolute; bottom: 20px;">read more     <i class="fa fa-angle-right"></i></h4>
+                  <% if !project.show %>
+                      <h4  class="text-center whiteBack" style="top: 30%; position: absolute;">HIDDEN</h4>
+                  <% end %>
+                  <% if project.inProgress %>
+                      <h4  class="text-center whiteBack" style="bottom: 60px; position: absolute;">In Development</h4>
+                  <% end %>
+                </div>
+            </a>
+
+        <% end %>
+
+      <% end %>
+      </div>
+          <% end %>
+    <% end %>
+
+</div>
+<script>
+    $("img").lazyload({
+        effect : "fadeIn"
+    });
+</script>
+

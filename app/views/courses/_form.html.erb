@@ -1,0 +1,218 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <label>Course ID (i.e. CLST 2053)</label>
+    <%= f.text_field :courseID , class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Category (i.e University of Arkansas Fayetteville)</label>
+    <%= f.select :college,Rails.configuration.x.displayOptions.courseCategories,{}, class: "form-control"  %>
+  </div>
+</div>
+      </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+
+
+        <div class="form-group">
+          <label>Times Offered</label>
+          <%= f.text_field :timeOffered, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <%= f.text_field :location, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <label>Website</label>
+          <%= f.text_field :website, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <label>Syllabus Upload</label>
+          <%= f.file_field :pdf , class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <label>Collaborators</label>
+          <%= f.text_field :collaborators, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="col-md-5">
+
+        <div class="form-group">
+          <label>Custom Field</label>
+          <p>WARNING: This is not an HTML safe field. Custom HTML can be added for a completely custom field. Use Caution!</p>
+          <label>Field Title</label><%= f.text_field :auxTitle, class: "form-control"  %>
+          <label>Field Data</label><%= f.text_field :aux, class: "form-control"  %>
+        </div>
+
+
+
+
+
+
+      </div>
+      </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="form-group">
+          <%= f.label :summary %><br>
+          <%= f.cktext_area :summary, :value => @course.summary , :id => 'sometext' %>
+        </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.label "Main Image (Required)" %>
+          <%= f.file_field :mainImg , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.mainImg? %>
+            <%= image_tag @course.mainImg.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <%= f.label "Gallery Images" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img1 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.img1? %>
+            <%= image_tag @course.img1.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img2 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.img2? %>
+            <%= image_tag @course.img2.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img3 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.img3? %>
+            <%= image_tag @course.img3.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img4 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.img4? %>
+            <%= image_tag @course.img4.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img5 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @course.img5? %>
+            <%= image_tag @course.img5.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <p>Are you ready for this to be displayed? Leave unpublished to come back later and finish.</p>
+        <label>Published</label>
+        <%= f.check_box :show %>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.submit "Submit", class: 'btn' %>
+        </div>
+      </div>
+  </div>
+
+        <hr>
+<% end %>
+

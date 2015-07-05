@@ -1,0 +1,57 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class="navbar-brand" style="padding: 5px 5px 5px 5px" href='/'> <img style="height: 100%" src="<%= asset_path  'NavLogo2.png'%>"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href='/projects' class="navLinks">PROJECTS</a></li>
+        <li><a href='/classes' class="navLinks">COURSES</a></li>
+        <li><a href='/news' class="navLinks">NEWS</a></li>
+        <li><a href='/about' class="navLinks">ABOUT US</a></li>
+        <li><a href='/contact' class="navLinks">CONTACT</a></li>
+
+        <hr>
+
+        <li><a href='/blog' class="navLinks">DEV BLOGS</a></li>
+
+        <% if user_signed_in? %>
+            <hr>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Profile', edit_user_registration_path, :method => :GET,class: "navLinks"   %></li>
+
+                <% if can? :create, Project %>
+                    <li><%= link_to 'New Project', new_project_path ,class: "navLinks"  %></li>
+                <% end %>
+                <% if can? :create, Course %>
+                    <li><%= link_to 'New Course', new_course_path ,class: "navLinks"  %></li>
+                <% end %>
+                <% if can? :create, Blog %>
+                    <li><%= link_to 'New News/Blog', new_blog_path ,class: "navLinks"  %></li>
+                <% end %>
+
+
+
+
+
+
+              </ul>
+            </li>
+            <hr>
+            <li><%= link_to 'Log Out', destroy_user_session_path, :method => :DELETE,class: "navLinks"   %></li>
+        <% end %>
+      </ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

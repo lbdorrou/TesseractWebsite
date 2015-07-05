@@ -1,0 +1,96 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+<div class="row transparent" style=" overflow: hidden; padding-left: 0;">
+  <div class="col-md-6" style="padding-left: 0">
+    <h1 class="center" >WE ARE TESSERACT</h1>
+    <p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>
+  </div>
+  <div class="col-md-4 third">
+    <img  src="<%= asset_path ('aboutus.png') %>" class="third" style="float: left"></img>
+  </div>
+</div>
+
+    <% @users.each do |userSet| %>
+      <% if !userSet.empty? %>
+
+
+
+          <div class="row transparent" style=" overflow: hidden; padding: 0">
+            <h1 class="blackBack"><%= userSet.first.category %></h1>
+          </div>
+
+      <div class="row transparent">
+        <% userSet.each do |user| %>
+
+        <% if user.show or can? :update, user %>
+
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 hoverDiv" id="button<%= user.firstName%><%= user.lastName%>">
+              <h2 style="font-size: 150%" class="text-center whiteBack"><%= user.firstName%> <%= user.lastName%></h2>
+              <div class="owl-carousel" id="<%= user.firstName%><%= user.lastName%>">
+
+                <div style="overflow: hidden">
+                  <div class="round-image-res floatCenter" style="background-image:  url('<%= user.avatar.url %>')"></div>
+                  <h4 class="text-center whiteBack"><%= user.job %></h4>
+
+                  <% if can? :update, user %>
+                      <a href="<%= edit_user_path(user) %>" class="text-center whiteBack" style="top: 40%; position: absolute;">EDIT</a>
+                  <% end %>
+                  <% if can? :delete, user %>
+                      <h4 class="text-center whiteBack" style="top: 60%; position: absolute; color: red"><%= link_to 'DELETE', user, method: :delete, data: { confirm: 'Are you sure? THIS COULD BRAKE MAJOR STUFF!' } %>  <i class="fa fa-exclamation-triangle"></i></h4>
+                  <% end %>
+
+                  <% if !user.show %>
+                      <h4  class="text-center whiteBack" style="top: 20%; position: absolute;">HIDDEN</h4>
+                  <% end %>
+
+                </div>
+
+                <div style="overflow: hidden" >
+
+                  <p class="whiteBack"> <%= user.bio %></p>
+                  <% if !user.website.blank? %>
+                      <h4  class="whiteBack"><a href="<%= user.website %>" target="_blank">[WEBSITE]</a></h4>
+                  <% end %>
+                </div>
+
+
+              </div>
+
+              <script>
+                  var v<%= user.firstName%><%= user.lastName%> = $('#<%= user.firstName%><%= user.lastName%>');
+                  // Go to the next item
+                  $('#button<%= user.firstName%><%= user.lastName%>').click(function() {
+                      v<%= user.firstName%><%= user.lastName%>.trigger('next.owl.carousel');
+                  })
+
+              </script>
+
+            </div>
+            <% end %>
+        <% end %>
+
+      </div>
+          <% end %>
+    <% end %>
+
+
+
+
+
+
+
+
+</div>
+
+  <script>
+      $(document).ready(function(){
+          $('.owl-carousel').owlCarousel({
+              items: 1,
+              lazyLoad:false,
+              loop:true,
+              margin:1,
+              autoplay:false
+          });
+      });
+
+
+  </script>

@@ -1,0 +1,189 @@
+<div class="row transparent" style=" overflow: hidden; padding-left: 0px;  padding-bottom: 20px;">
+
+    <div class="col-md-5 third" style="background: #000"> <img class="img-responsive" style="height: 100%;" src="<%= asset_path ('bannerCenter.jpg') %>"> </div>
+    <div class="col-md-7 third" style="padding: 0; overflow: hidden">
+      <div class="owl-carousel third" id="mainBanner">
+
+        <div class="item half dark" style="overflow: hidden; padding: 0 ">
+          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
+          <h1 class="blackBack" style="top: 0; position: absolute">Game Design Courses</h1>
+          <p class="blackBack" style="top: 50%; position: absolute">We offer classes using the latest industry software</p>
+
+        </div>
+
+        <div class="item half dark" style="overflow: hidden; padding: 0 ">
+          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
+          <h1 class="blackBack" style="top: 0; position: absolute">Historical Reconstructions</h1>
+
+
+        </div>
+
+        <div class="item half dark" style="overflow: hidden; padding: 0 ">
+          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
+          <h1 class="blackBack" style="top: 0; position: absolute">Interdisciplinary Work</h1>
+
+
+        </div>
+
+        <div class="item half dark" style="overflow: hidden; padding: 0 ">
+          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
+          <h1 class="blackBack" style="top: 0; position: absolute">Interactive Learning</h1>
+
+
+        </div>
+
+        <div class="item half dark" style="overflow: hidden;padding: 0  ">
+          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
+          <h1 class="blackBack" style="top: 0; position: absolute">Architectural Visualizations</h1>
+
+
+        </div>
+
+      </div>
+    </div>
+
+</div>
+
+
+
+<div class="row transparent third" style="overflow: hidden; padding: 0; padding-bottom: 20px" >
+  <div class="owl-carousel third" id="showCase">
+
+    <% @show.each do |item| %>
+        <a href="<% if item.is_a?(Project)%><%= project_path(item)%><% else %><%= course_path(item)%><% end %>">
+        <div class="item third loading " style="overflow: hidden; " >
+
+
+          <img class="owl-lazy" style="height: 120%; width: auto" data-src="<%= item.mainImg %>"  alt="">
+
+          <h2 class="center " style="position: absolute; top: 60px;"><%= item.title %></h2>
+          <h4 class="center hoverDiv" style=" position: absolute; bottom: 10px;">Learn more     <i class="fa fa-angle-right"></i></h4>
+
+        </div>
+        </a>
+
+
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="row transparent" style="padding: 0;">
+  <div class="col-md-12 col-lg-6 ">
+    <h1 class="blackBack">LATEST NEWS</h1>
+    <% @news.each_with_index do |blog, i| %>
+        <a class="news" href="<%= blog_path(blog) %>">
+          <div class="row whiteBack hoverDiv" style=" overflow: hidden; padding-left: 0">
+            <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
+              <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, class: 'lazyImg', style: "width: 100%;" ) %></div>
+              <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
+            </div>
+            <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
+              <h2 ><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></h2>
+              <p><%= blog.tagLine %></p>
+
+
+            </div>
+
+          </div>
+        </a>
+
+        <hr style="margin-top: 5px; margin-bottom: 5px;  border: 0">
+
+
+
+    <% end %>
+  </div>
+  <div class=" col-md-12 col-lg-6 ">
+    <h1 class="blackBack">LATEST DEVELOPMENT BLOGS</h1>
+    <% @blogs.each_with_index do |blog, i| %>
+        <a class="news" href="<%= blog_path(blog) %>">
+          <div class="row hoverDiv whiteBack" style=" overflow: hidden; padding-left: 0">
+            <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
+              <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true , class: 'lazyImg', style: "width: 100%;" ) %></div>
+              <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
+            </div>
+            <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
+              <h2 ><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></h2>
+              <p><%= blog.tagLine %></p>
+
+            </div>
+
+          </div>
+        </a>
+
+        <hr style="margin-top: 5px; margin-bottom: 5px; border: 0">
+
+
+
+    <% end %>
+  </div>
+
+</div>
+<div class="row transparent" style="padding: 0">
+  <div class="col-md-12">
+    <h1 class="blackBack">GET TO KNOW US</h1>
+      <div class="col-md-6" style="padding-left: 0">
+        <p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>
+      </div>
+      <div class="col-md-4 third">
+        <img  src="<%= asset_path('aboutus.png') %>" class="third" style="float: left"></img>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(".lazyImg").lazyload({
+        effect : "fadeIn"
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+
+
+        $('#mainBanner').owlCarousel({
+            autoplaySpeed: 1000,
+            navSpeed: 1000,
+            items: 1,
+            lazyLoad:true,
+            loop:true,
+            margin:0,
+            autoplay:true,
+            autoplayTimeout:5000
+
+        });
+        $('#showCase').owlCarousel({
+            mouseDrag: false,
+            touchDrag:false,
+
+            nav: true,
+            navSpeed: 1000,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                1000:{
+                    items:2
+                },
+                1300:{
+                    items:4
+                }
+            },
+            lazyLoad:true,
+            loop:true,
+            margin:20
+        });
+    });
+
+
+</script>
+

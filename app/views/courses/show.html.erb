@@ -1,0 +1,124 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="row half" style=" background-color: #000; overflow: hidden; padding-left: 0px;">
+    <div class="col-md-12" style="padding: 0">
+      <div class="owl-carousel ">
+        <% if @course.mainImg? %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg" data-src="<%= @course.mainImg.url %>"  alt=""></div>
+        <% else %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg" data-src="/assets/missing3x2.jpg"  alt=""></div>
+        <% end %>
+        <% if @course.img1? %>
+            <div class="item  half loading" style="overflow: hidden;"><img class="owl-lazy halfImg"  data-src="<%= @course.img1.url %>"  alt=""></div>
+        <% end %>
+        <% if @course.img2? %>
+            <div class="item  half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @course.img2.url %>" alt=""></div>
+        <% end %>
+        <% if @course.img3? %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @course.img3.url %>" alt=""></div>
+        <% end %>
+        <% if @course.img4? %>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @course.img4.url %>" alt=""></div>
+        <% end %>
+        <% if @course.img5? %>
+            <div class="item half loading" style="overflow: hidden;  "><img class="owl-lazy halfImg"  data-src="<%= @course.img5.url %>" alt=""></div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row dark"  style="padding-left: 0; border-top: solid 1px #000;">
+      <h1 class="center"><%= @course.title %></h1>
+  </div>
+  <div class="row dark"  style="padding-left: 0">
+    <h3 class="center"><%= @course.courseID %></h3>
+  </div>
+
+  <div class="row light" style="padding-top: 30px; padding-bottom: 30px; border-top: solid 1px #000;  min-height: 100vh;" >
+
+    <div class="col-lg-2 col-md-3" >
+      <% if !@course.timeOffered.blank? %>
+      <h2>Times Offered</h2>
+      <%= @course.timeOffered %>
+      <hr>
+      <% end %>
+
+      <% if !@course.location.blank? %>
+      <h2>Location</h2>
+      <%= @course.location %>
+      <hr>
+      <% end %>
+
+      <% if !@course.website.blank? %>
+      <h2>Website</h2>
+      <a href="<%= @course.website %>">Link</a>
+      <hr>
+      <% end %>
+
+      <% if @course.pdf? %>
+      <h2>Syllabus</h2>
+      <a href="<%= @course.pdf.url %>">Link</a>
+      <hr>
+      <% end %>
+
+      <% if !@course.collaborators.blank? %>
+      <h2>Collaborators</h2>
+      <%= @course.collaborators %>
+      <hr>
+      <% end %>
+
+      <% if !@course.auxTitle.blank? %>
+      <h2><%= @course.auxTitle %></h2>
+      <%= @course.aux %>
+      <hr>
+      <% end %>
+
+
+
+
+
+      <% if can? :update, @course %><%= link_to 'Edit', edit_course_path(@course) %><%end%> <% if can? :delete, @course %> | <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %> <i class="fa fa-exclamation-triangle"></i><% end %>
+
+    </div>
+
+
+    <div class="col-lg-6 col-md-7" >
+
+      <%= @course.summary.html_safe %>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                1000:{
+                    items:2
+                },
+                1300:{
+                    items:3
+                },
+                2000:{
+                    items:4
+                }
+            },
+            lazyLoad:true,
+            loop:true,
+            margin:3,
+            autoplaySpeed: 2000,
+            autoplay:true,
+            autoplayTimeout:3500,
+            autoplayHoverPause:true
+        });
+    });
+
+
+</script>

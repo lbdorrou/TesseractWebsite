@@ -1,0 +1,51 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="centerPage">
+
+    <div style="overflow: hidden; height:25vh; width: 832px;">
+      <img  src="<%= asset_path('welcome.jpg') %>" style="width: 832px; "></img>
+    </div>
+    <h1 class="center" style="margin-top: -20vh; position: relative;">Create Account</h1>
+
+    <div class="row">
+
+      <div class="col-md-5 floatCenter">
+        <h2>For Internal Use Only</h2>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+
+      <div class="col-md-5 floatCenter">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: 'form-control', autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= f.submit "Sign up", class: 'btn' %>
+  </div>
+<% end %>
+        </div>
+      </div>
+
+      </div>
+    </div>

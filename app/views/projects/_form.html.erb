@@ -1,0 +1,224 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+        <div class="form-group">
+          <%= f.label :category %> Please add in Plural form)<br>
+
+                <%= f.select :category,Rails.configuration.x.displayOptions.gameCategories,{}, class: "form-control" %>
+              </div>
+
+        </div>
+      </div>
+
+    <hr>
+
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+
+                <div class="form-group">
+                  <label>Client (separate by comma)</label>
+                  <%= f.text_area :client, class: "form-control"  %>
+                </div>
+            <div class="form-group">
+              <label>Publish Date (If in development this will not show)</label>
+              <%= f.date_select :pubDate, options = {:start_year => 2000, :end_year => 2030, :discard_day => true}, class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              <%= f.text_field :location, class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <label>Collaborators (separate by comma)</label>
+              <%= f.text_area :collaborators, class: "form-control"  %>
+            </div>
+                <div class="form-group">
+                  <label>Website (external website or link to hosted playable build)</label>
+                  <%= f.text_field :playLink, class: "form-control"  %>
+                </div>
+                <div class="form-group">
+                  <label>Link to Youtube video</label>
+                  <p>This is not implemented in the view yet. Please fill this out so that your entry will be future compatible.</p>
+                  <%= f.text_field :videoLink, class: "form-control"  %>
+                </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label>Custom Field</label>
+            <p>WARNING: This is not an HTML safe field. Custom HTML can be added for a completely custom field. Use Caution!</p>
+            <label>Field Title</label><%= f.text_field :auxTitle, class: "form-control"  %>
+            <label>Field Data</label><%= f.text_field :aux, class: "form-control"  %>
+          </div>
+        </div>
+
+
+  </div>
+
+<hr>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+
+
+        <div class="form-group">
+          <%= f.label :summary %><br>
+          <%= f.cktext_area :summary, :value => @project.summary, :id => 'sometext' %>
+        </div>
+
+    </div>
+  </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.label "Main Image (Required)" %>
+          <%= f.file_field :mainImg , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.mainImg? %>
+        <%= image_tag @project.mainImg.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <%= f.label "Gallery Images" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img1 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.img1? %>
+        <%= image_tag @project.img1.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img2 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.img2? %>
+        <%= image_tag @project.img2.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img3 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.img3? %>
+        <%= image_tag @project.img3.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img4 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.img4? %>
+        <%= image_tag @project.img4.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.file_field :img5 , class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <% if @project.img5? %>
+        <%= image_tag @project.img5.url(:medium), class: "well"  %>
+        <% else %>
+            <label>NO IMAGE UPLOADED</label>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <label>In Development?</label>
+        <%= f.check_box :inProgress %>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <p>Are you ready for this to be displayed? Leave unpublished to come back later and finish.</p>
+        <label>Published</label>
+        <%= f.check_box :show %>
+      </div>
+      <div class="col-md-5">
+    <div class="form-group">
+      <%= f.submit "Submit", class: 'btn' %>
+    </div>
+          </div>
+        </div>
+    <hr>
+<% end %>
+

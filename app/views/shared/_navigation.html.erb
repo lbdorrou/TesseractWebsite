@@ -1,0 +1,72 @@
+<div class="links stickem">
+  <a href='/' style="padding-left: 0px;"><img class='img-responsive' src=<%= asset_path "NavLogo.png" %>></a>
+  <hr>
+  <a href='/projects' class="navLinks">PROJECTS</a>
+  <br><a href='/classes' class="navLinks">COURSES</a>
+  <br><a href='/news' class="navLinks">NEWS</a>
+  <br><a href='/about' class="navLinks">ABOUT US</a>
+  <br><a href='/contact' class="navLinks">CONTACT</a>
+
+  <hr>
+
+  <a href='/blog' class="navLinks">DEV BLOGS</a>
+
+  <% if Rails.application.config.x.displayOptions.enableSocialFacebook %>
+      <br><a href="<%= Rails.application.config.x.displayOptions.facebook %>" class="socialLinks" style=" padding-left: 30px;"><i class="fa fa-facebook"></i>  </a>
+  <% end %>
+  <% if Rails.application.config.x.displayOptions.enableSocialTwitter %>
+     <a href="<%= Rails.application.config.x.displayOptions.twitter %>" class="socialLinks" style=" padding-left: 10px;"><i class="fa fa-twitter"></i>  </a>
+  <% end %>
+  <% if Rails.application.config.x.displayOptions.enableSocialYoutube %>
+      <a href="<%= Rails.application.config.x.displayOptions.youtube %>" class="socialLinks" style=" padding-left: 10px;"><i class="fa fa-youtube-play"></i>  </a>
+  <% end %>
+
+  <hr>
+  <% if user_signed_in? %>
+      <%= link_to 'Profile', edit_user_registration_path, :method => :GET,class: "navLinks"   %>
+
+      <% if can? :create, Project %>
+          <br><%= link_to 'New Project', new_project_path ,class: "navLinks"  %>
+          <% end %>
+      <% if can? :create, Course %>
+          <br><%= link_to 'New Course', new_course_path ,class: "navLinks"  %>
+      <% end %>
+      <% if can? :create, Blog %>
+          <br><%= link_to 'New News/Blog', new_blog_path ,class: "navLinks"  %>
+      <% end %>
+
+
+
+      <hr>
+
+      <%= link_to 'Log Out', destroy_user_session_path, :method => :DELETE,class: "navLinks"   %>
+      <hr>
+
+  <% end %>
+
+  <div style="padding-left: 23px; padding-right: 20px;">
+   <p ><%= notice %><%= alert %></p>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.Main').stickem();
+
+        $(".navLinks").hover(function(){
+            var temp = this.innerHTML;
+            this.innerHTML = "[" + temp + "]";
+        }, function(){
+            this.innerHTML = this.innerHTML.substring(1, this.innerHTML.length-1);
+        });
+
+    });
+</script>

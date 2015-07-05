@@ -1,0 +1,46 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="centerPage">
+
+    <div style="overflow: hidden; height:25vh; width: 832px;">
+      <img  src="/assets/welcome.jpg" style="width: 832px; "></img>
+    </div>
+    <h1 class="center" style="margin-top: -20vh; position: relative;">Log In</h1>
+
+    <div class="row">
+      <div class="col-md-5 floatCenter">
+        <h2>For Internal Use Only</h2>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-5 floatCenter">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: "form-control" ,autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, class: "form-control" ,autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="form-group">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="form-group">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+    </div>
+      </div>
+    </div>
+
+</div>

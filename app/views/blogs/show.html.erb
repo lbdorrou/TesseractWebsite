@@ -1,0 +1,45 @@
+<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="centerPage">
+
+    <div style="overflow: hidden; height:25vh; width: 832px;">
+      <%= image_tag(@blog.mainImg.url, style: "width: 832px;" ) %>
+    </div>
+    <h1 class="center" style="margin-top: -20vh; position: relative;"><%= @blog.title %></h1>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+
+        <%= @blog.content.html_safe %>
+
+        <% if can? :update, @blog %>
+            <% if current_user.role == "author" && @blog.publisher != current_user.email %>
+                <hr>
+                <h2 class="text-center">NOT YOUR ENTRY</h2>
+            <% else %>
+        <hr>
+        <h2 class="text-center"><%= link_to 'Edit', edit_blog_path(@blog) %> <% if can? :delete, @blog %> | <%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %> <i class="fa fa-exclamation-triangle"></i><% end %></h2>
+
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="round-image-50 floatCenter"><%= image_tag(@userInfo.avatar.url(:medium)) %></div>
+        <h2 class="text-center"><%= @userInfo.firstName %> <%= @userInfo.lastName %></h2>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-center"><%= @blog.date.strftime("%B") %></h2>
+        <h1 class="text-center" style="font-size: 80px"><%= @blog.date.strftime("#{@blog.date.day.ordinalize}") %></h1>
+        <h2 class="text-center"><%= @blog.date.strftime("%Y") %></h2>
+      </div>
+    </div>
+    <hr>
+
+ </div>
+</div>
