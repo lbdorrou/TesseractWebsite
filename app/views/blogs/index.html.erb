@@ -15,7 +15,7 @@
 <a class="news" href="<%= blog_path(blog) %>">
     <div class="row hoverDiv" style=" overflow: hidden; padding-left: 0">
       <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
-        <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, style: "width: 100%;" ) %></div>
+        <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, style: "width: 100%;",:class => blog.img0Class ) %></div>
         <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
         <% if !blog.show %>
             <h4  class="text-center whiteBack" style="top: 30%; position: absolute;">HIDDEN</h4>
@@ -47,6 +47,61 @@
     $("img").lazyload({
         effect : "fadeIn"
     });
+	
+	$("img").load(function(){
+	  $(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
+		});
+	});
+	
 </script>
 
 

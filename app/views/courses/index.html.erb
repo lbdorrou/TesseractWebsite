@@ -20,7 +20,7 @@
             <% if course.show or can? :update, course %>
                 <a href="<%= course_path(course) %>">
                   <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 hoverDiv" style=" overflow: hidden; height: 40vh; padding: 10px 10px 10px 10px; ">
-                    <div  style="height: 100%; border: solid 1px #000; overflow: hidden" ><%= image_tag course.mainImg.url, alt: "", lazy: true, :class => "fullImg" %></div>
+                    <div  style="height: 100%; border: solid 1px #000; overflow: hidden" ><%= image_tag course.mainImg.url, alt: "", lazy: true, :class => "fullImg "  + course.img0Class %></div>
                     <h2 class="center" style="position: absolute; top: 15%;"><%= course.title %></h2>
 
                     <h4 class="center" style=" position: absolute; bottom: 20px;">read more     <i class="fa fa-angle-right"></i></h4>
@@ -45,5 +45,60 @@
     $("img").lazyload({
         effect : "fadeIn"
     });
+	
+	$("img").load(function(){
+	  $(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
+		});
+	});
+	
 </script>
 

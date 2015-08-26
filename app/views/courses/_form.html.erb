@@ -100,6 +100,8 @@
         <div class="form-group">
           <%= f.label "Main Image (Required)" %>
           <%= f.file_field :mainImg , class: "form-control" %>
+			   <%= f.label  "Alignment"  %> <br>
+			  <%= f.select :img0Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">
@@ -123,6 +125,7 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img1 , class: "form-control" %>
+			  <%= f.select :img1Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">
@@ -139,11 +142,13 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img2 , class: "form-control" %>
+			  <%= f.select :img2Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">
         <% if @course.img2? %>
             <%= image_tag @course.img2.url(:medium), class: "well"  %>
+				
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -155,11 +160,13 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img3 , class: "form-control" %>
+			  <%= f.select :img3Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">
         <% if @course.img3? %>
             <%= image_tag @course.img3.url(:medium), class: "well"  %>
+				
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -171,11 +178,13 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img4 , class: "form-control" %>
+			  <%= f.select :img4Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">
         <% if @course.img4? %>
             <%= image_tag @course.img4.url(:medium), class: "well"  %>
+				
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -187,6 +196,7 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img5 , class: "form-control" %>
+			  <%= f.select :img5Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
         </div>
       </div>
       <div class="col-md-6">

@@ -2,7 +2,7 @@
   <div class="centerPage">
 
     <div style="overflow: hidden; height:25vh; width: 832px;">
-      <%= image_tag(@blog.mainImg.url, style: "width: 832px;" ) %>
+      <%= image_tag(@blog.mainImg.url, style: "width: 832px;", :class =>  @blog.img0Class ) %>
     </div>
     <h1 class="center" style="margin-top: -20vh; position: relative;"><%= @blog.title %></h1>
 
@@ -43,3 +43,60 @@
 
  </div>
 </div>
+			
+			<script>
+				$("img").load(function(){
+	  $(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
+		});
+	});
+	
+			</script>

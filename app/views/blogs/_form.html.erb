@@ -39,6 +39,7 @@
         <div class="form-group">
           <%= f.label "Main Image (Required)" %>
           <%= f.file_field :mainImg , class: "form-control" %>
+			  <%= f.select :img0Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
         </div>
       </div>
       <div class="col-md-6">
