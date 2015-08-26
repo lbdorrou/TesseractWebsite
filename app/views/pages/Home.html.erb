@@ -1,8 +1,23 @@
-<div class="row transparent" style=" overflow: hidden; padding-left: 0px;  padding-bottom: 20px;">
-
-    <div class="col-md-5 third" style="background: #000"> <img class="img-responsive" style="height: 100%;" src="<%= asset_path ('bannerCenter.jpg') %>"> </div>
-    <div class="col-md-7 third" style="padding: 0; overflow: hidden">
-      <div class="owl-carousel third" id="mainBanner">
+<div class="row transparent half" style=" overflow: hidden; padding-left: 0px;  padding-bottom: 20px;">
+ 
+    <div class="col-md-4" style="padding-right: 0px;" > 
+	
+	  <video  class="half" style="position: absolute; left: 50%; transform: translateX(-50%);" loop autoplay preload="auto">
+		<source id='mp4'
+		src="<%= asset_path ('testVideo.mp4') %>"
+		type='video/mp4'>
+		
+	  </video>
+		<img class="img-responsive half" style=" position: absolute; top: 0px; left: 50%; transform: translateX(-50%); " src="<%= asset_path ('overlayVideo.png') %>">
+	
+		</div>
+	<div class="col-md-8" style="position: relative; padding-left: 0px;">
+		<img class="img-responsive " style="width: 100%; top: 50%; " src="<%= asset_path ('center.png') %>">
+		
+	</div>
+  <!--
+    <div class="col-md-7 half" style="padding: 0; overflow: hidden">
+      <div class="owl-carousel half" id="mainBanner">
 
         <div class="item half dark" style="overflow: hidden; padding: 0 ">
           <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
@@ -41,12 +56,13 @@
 
       </div>
     </div>
-
+-->
 </div>
 
 
 
-<div class="row transparent third" style="overflow: hidden; padding: 0; padding-bottom: 20px" >
+<div class="row transparent " style="overflow: hidden; padding-bottom: 20px" >
+	<h1 class="blackBack">FEATURED PROJECTS</h1>
   <div class="owl-carousel third" id="showCase">
 
     <% @show.each do |item| %>
@@ -54,7 +70,7 @@
         <div class="item third loading " style="overflow: hidden; " >
 
 
-          <img class="owl-lazy" style="height: 120%; width: auto" data-src="<%= item.mainImg %>"  alt="">
+          <img class="owl-lazy <%= item.img0Class %>" style="height: 120%; width: auto" data-src="<%= item.mainImg %>"  alt="">
 
           <h2 class="center " style="position: absolute; top: 60px;"><%= item.title %></h2>
           <h4 class="center hoverDiv" style=" position: absolute; bottom: 10px;">Learn more     <i class="fa fa-angle-right"></i></h4>
@@ -67,14 +83,10 @@
   </div>
 </div>
 
-
-
-
-
-
+		
 <div class="row transparent" style="padding: 0;">
-  <div class="col-md-12 col-lg-6 ">
-    <h1 class="blackBack">LATEST NEWS</h1>
+  <div class="col-md-12 col-lg-4 ">
+    <h2 class="blackBack">NEWS</h2>
     <% @news.each_with_index do |blog, i| %>
         <a class="news" href="<%= blog_path(blog) %>">
           <div class="row whiteBack hoverDiv" style=" overflow: hidden; padding-left: 0">
@@ -98,9 +110,11 @@
 
     <% end %>
   </div>
-  <div class=" col-md-12 col-lg-6 ">
-    <h1 class="blackBack">LATEST DEVELOPMENT BLOGS</h1>
-    <% @blogs.each_with_index do |blog, i| %>
+		
+
+  	<div class="col-md-12 col-lg-4 ">
+    	<h2 class="blackBack">DEVELOPMENT BLOGS</h2>
+		<% @blogs.each_with_index do |blog, i| %>
         <a class="news" href="<%= blog_path(blog) %>">
           <div class="row hoverDiv whiteBack" style=" overflow: hidden; padding-left: 0">
             <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
@@ -121,21 +135,24 @@
 
 
     <% end %>
+	  </div>
+  <div class="col-md-12 col-lg-4 ">
+    	<h2 class="blackBack">ABOUT US</h2>
+			<img  src="<%= asset_path('aboutus.png') %>"  style="width: 100%"></img>
+		  
+			<p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>		
+		 
+	  </div>
+				
   </div>
+		
+		
+		
+		
+		
+		
+		
 
-</div>
-<div class="row transparent" style="padding: 0">
-  <div class="col-md-12">
-    <h1 class="blackBack">GET TO KNOW US</h1>
-      <div class="col-md-6" style="padding-left: 0">
-        <p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>
-      </div>
-      <div class="col-md-4 third">
-        <img  src="<%= asset_path('aboutus.png') %>" class="third" style="float: left"></img>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
     $(".lazyImg").lazyload({
@@ -185,5 +202,61 @@
     });
 
 
+	$("img").load(function(){
+	  $(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
+		});
+	});
+	
+	
+	
 </script>
 
