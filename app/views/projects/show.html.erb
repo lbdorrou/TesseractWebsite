@@ -2,22 +2,23 @@
   <div class="row half" style=" background-color: #000; overflow: hidden; padding-left: 0px">
     <div class="col-md-12" style="padding: 0">
       <div class="owl-carousel ">
-        <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg" data-src="<%= @project.mainImg.url %>"  alt=""></div>
+		  
+        <div class="item half loading" style="overflow: hidden; "><img  class="owl-lazy halfImg <%= @project.img0Class %>" data-src="<%= @project.mainImg.url %>"  alt=""></div>
 
         <% if @project.img1? %>
-            <div class="item  half loading" style="overflow: hidden;"><img class="owl-lazy halfImg"  data-src="<%= @project.img1.url %>"  alt=""></div>
+            <div class="item  half loading" style="overflow: hidden;"><img class="owl-lazy halfImg <%= @project.img1Class %>"  data-src="<%= @project.img1.url %>"  alt=""></div>
         <% end %>
         <% if @project.img2? %>
-            <div class="item  half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img2.url %>" alt=""></div>
+            <div class="item  half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @project.img2Class %>"  data-src="<%= @project.img2.url %>" alt=""></div>
         <% end %>
         <% if @project.img3? %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img3.url %>" alt=""></div>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @project.img3Class %>"  data-src="<%= @project.img3.url %>" alt=""></div>
         <% end %>
         <% if @project.img4? %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg"  data-src="<%= @project.img4.url %>" alt=""></div>
+            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @project.img4Class %>"  data-src="<%= @project.img4.url %>" alt=""></div>
         <% end %>
         <% if @project.img5? %>
-            <div class="item half loading" style="overflow: hidden;  "><img class="owl-lazy halfImg"  data-src="<%= @project.img5.url %>" alt=""></div>
+            <div class="item half loading" style="overflow: hidden;  "><img class="owl-lazy halfImg <%= @project.img5Class %>"  data-src="<%= @project.img5.url %>" alt=""></div>
         <% end %>
 
 
@@ -72,8 +73,8 @@
           <%= @project.aux.html_safe %>
           <hr>
       <% end %>
-
-
+		
+	
       <% if can? :update, @project %><%= link_to 'Edit', edit_project_path(@project) %><%end%> <% if can? :delete, @project %> | <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %> <i class="fa fa-exclamation-triangle"></i><%end%>
 
     </div>
@@ -122,6 +123,60 @@
             autoplayHoverPause:true
         });
     });
+	
+	$("img").load(function(){
+	  $(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".CenterIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".LeftIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left", "0px" );
+		});
+	});
+	
+	$("img").load(function(){
+	  $(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
+		});
+	});
+	
+	$( window ).resize(function() {
+		$(".RightIMG").each(function(){
+			var childImg = $(this);
+			var childW = childImg.width();
+			var parW = childImg.parent().width();
+			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
+		});
+	});
 
 
 </script>
