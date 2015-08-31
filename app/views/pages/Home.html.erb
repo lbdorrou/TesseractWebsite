@@ -1,62 +1,27 @@
-<div class="row transparent half" style=" overflow: hidden; padding-left: 0px;  padding-bottom: 20px;">
+<div class="row transparent" style="  padding-top: 20px;  display: flex; align-items: center;">
  
-    <div class="col-md-4" style="padding-right: 0px;" > 
+    <div class="col-md-4 hidden-sm hidden-xs" style="padding-right: 0px"  > 
 	
-	  <video  class="half" style="position: absolute; left: 50%; transform: translateX(-50%);" loop autoplay preload="auto">
+	
+		
+	  <video   style="padding: 4px;width: 100%;" loop autoplay preload="auto">
 		<source id='mp4'
 		src="<%= asset_path ('testVideo.mp4') %>"
 		type='video/mp4'>
 		
 	  </video>
-		<img class="img-responsive half" style=" position: absolute; top: 0px; left: 50%; transform: translateX(-50%); " src="<%= asset_path ('overlayVideo.png') %>">
+		<img class="" style="position: absolute; top: 0px; width: 100%; " src="<%= asset_path ('overlayVideo.png') %>">
+		
 	
+	
+		
+
 		</div>
-	<div class="col-md-8" style="position: relative; padding-left: 0px;">
-		<img class="img-responsive " style="width: 100%; top: 50%; " src="<%= asset_path ('center.png') %>">
+	<div class="col-md-8 col-sm-12" style="position: relative;">
+		<img class="img-responsive "  src="<%= asset_path ('bannerNew.png') %>">
 		
 	</div>
-  <!--
-    <div class="col-md-7 half" style="padding: 0; overflow: hidden">
-      <div class="owl-carousel half" id="mainBanner">
-
-        <div class="item half dark" style="overflow: hidden; padding: 0 ">
-          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
-          <h1 class="blackBack" style="top: 0; position: absolute">Game Design Courses</h1>
-          <p class="blackBack" style="top: 50%; position: absolute">We offer classes using the latest industry software</p>
-
-        </div>
-
-        <div class="item half dark" style="overflow: hidden; padding: 0 ">
-          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
-          <h1 class="blackBack" style="top: 0; position: absolute">Historical Reconstructions</h1>
-
-
-        </div>
-
-        <div class="item half dark" style="overflow: hidden; padding: 0 ">
-          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
-          <h1 class="blackBack" style="top: 0; position: absolute">Interdisciplinary Work</h1>
-
-
-        </div>
-
-        <div class="item half dark" style="overflow: hidden; padding: 0 ">
-          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
-          <h1 class="blackBack" style="top: 0; position: absolute">Interactive Learning</h1>
-
-
-        </div>
-
-        <div class="item half dark" style="overflow: hidden;padding: 0  ">
-          <img class="owl-lazy "   data-src="/assets/missing3x2.jpg"  alt="">
-          <h1 class="blackBack" style="top: 0; position: absolute">Architectural Visualizations</h1>
-
-
-        </div>
-
-      </div>
-    </div>
--->
+  
 </div>
 
 
@@ -85,13 +50,23 @@
 
 		
 <div class="row transparent" style="padding: 0;">
+	
+	
+	<div class="col-md-12 col-lg-4 ">
+    	<h2 class="blackBack">ABOUT US</h2>
+			<img  src="<%= asset_path('aboutus.png') %>"  style="width: 100%"></img>
+		  
+			<p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>		
+		 
+	  </div>
+		
   <div class="col-md-12 col-lg-4 ">
     <h2 class="blackBack">NEWS</h2>
     <% @news.each_with_index do |blog, i| %>
         <a class="news" href="<%= blog_path(blog) %>">
           <div class="row whiteBack hoverDiv" style=" overflow: hidden; padding-left: 0">
             <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
-              <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, class: 'lazyImg', style: "width: 100%;" ) %></div>
+              <!--<div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, class: 'lazyImg', style: "width: 100%;" ) %></div>-->
               <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
             </div>
             <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
@@ -136,13 +111,7 @@
 
     <% end %>
 	  </div>
-  <div class="col-md-12 col-lg-4 ">
-    	<h2 class="blackBack">ABOUT US</h2>
-			<img  src="<%= asset_path('aboutus.png') %>"  style="width: 100%"></img>
-		  
-			<p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>		
-		 
-	  </div>
+  
 				
   </div>
 		
