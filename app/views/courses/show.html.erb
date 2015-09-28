@@ -1,38 +1,39 @@
-<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
-  <div class="row half" style=" background-color: #000; overflow: hidden; padding-left: 0px;">
+<div class="row full" style="overflow: hidden; padding-left: 0px; ">
+  <div class="row" style=" background-color: #000; overflow: hidden; padding-left: 0px;">
     <div class="col-md-12" style="padding: 0">
       <div class="owl-carousel ">
         <% if @course.mainImg? %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @course.img0Class %>" data-src="<%= @course.mainImg.url %>"  alt=""></div>
+            <div class="item loading" style="overflow: hidden; "><img class="owl-lazy  " data-src="<%= @course.mainImg.url(:medium) %>"  alt=""></div>
         <% else %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg " data-src="/assets/missing3x2.jpg"  alt=""></div>
+            <div class="item  loading" style="overflow: hidden; "><img class="owl-lazy  " data-src="/assets/missing3x2.jpg"  alt=""></div>
         <% end %>
         <% if @course.img1? %>
-            <div class="item  half loading" style="overflow: hidden;"><img class="owl-lazy halfImg <%= @course.img1Class %>"  data-src="<%= @course.img1.url %>"  alt=""></div>
+            <div class="item   loading" style="overflow: hidden;"><img class="owl-lazy  "  data-src="<%= @course.img1.url(:medium) %>"  alt=""></div>
         <% end %>
         <% if @course.img2? %>
-            <div class="item  half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @course.img2Class %>"   data-src="<%= @course.img2.url %>" alt=""></div>
+            <div class="item   loading" style="overflow: hidden; "><img class="owl-lazy "   data-src="<%= @course.img2.url(:medium) %>" alt=""></div>
         <% end %>
         <% if @course.img3? %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @course.img3Class %>"   data-src="<%= @course.img3.url %>" alt=""></div>
+            <div class="item  loading" style="overflow: hidden; "><img class="owl-lazy "   data-src="<%= @course.img3.url(:medium) %>" alt=""></div>
         <% end %>
         <% if @course.img4? %>
-            <div class="item half loading" style="overflow: hidden; "><img class="owl-lazy halfImg <%= @course.img4Class %>"  data-src="<%= @course.img4.url %>" alt=""></div>
+            <div class="item  loading" style="overflow: hidden; "><img class="owl-lazy  "  data-src="<%= @course.img4.url(:medium) %>" alt=""></div>
         <% end %>
         <% if @course.img5? %>
-            <div class="item half loading" style="overflow: hidden;  "><img class="owl-lazy halfImg <%= @course.img5Class %>"  data-src="<%= @course.img5.url %>" alt=""></div>
+            <div class="item  loading" style="overflow: hidden;  "><img class="owl-lazy "  data-src="<%= @course.img5.url(:medium) %>" alt=""></div>
         <% end %>
 
       </div>
     </div>
   </div>
 
-  <div class="row dark"  style="padding-left: 0; border-top: solid 1px #000;">
-      <h1 class="center"><%= @course.title %></h1>
+  <div class="row transparent"  style="border-top: solid 1px #000; ">
+    <h1 style="margin: .1rem .5rem 0rem" ><%= @course.title %></h1>
   </div>
-  <div class="row dark"  style="padding-left: 0">
-    <h3 class="center"><%= @course.courseID %></h3>
+  <div class="row transparent"  >
+    <h3 style="margin: 0rem .5rem .5rem" ><%= @course.courseID %></h3>
   </div>
+
 
   <div class="row light" style="padding-top: 30px; padding-bottom: 30px; border-top: solid 1px #000;  min-height: 100vh;" >
 

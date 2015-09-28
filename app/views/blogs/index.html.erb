@@ -1,37 +1,34 @@
 <div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
-  <div class="row dark" style="overflow: hidden; border-bottom: solid 1px #000; padding-left: 0;">
-    <h1 class="center" >NEWS</h1>
-  </div>
-
-
-
-
-  <div class="centerPage">
+ 
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6 greyTransparent full" style="padding-top: 20px;">
 
 
 
     <% @blogs.each_with_index do |blog, i| %>
         <% if blog.show or can? :update, blog %>
-<a class="news" href="<%= blog_path(blog) %>">
-    <div class="row hoverDiv" style=" overflow: hidden; padding-left: 0">
-      <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
-        <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, style: "width: 100%;",:class => blog.img0Class ) %></div>
-        <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
+<a class="projectLinks" href="<%= blog_path(blog) %>">
+    <div class="row diagonal" style=" padding-left: 0">
+      <div class="col-md-5" style="">
+        <div><%= image_tag(blog.mainImg.url(:medium), lazy: true, style: "width: 100%;",:class => "img-responsive" ) %></div>
+        
         <% if !blog.show %>
             <h4  class="text-center whiteBack" style="top: 30%; position: absolute;">HIDDEN</h4>
         <% end %>
       </div>
-      <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
-        <h2 ><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></h2>
-        <p><%= blog.tagLine %></p>
-        <h4 style="bottom: 0; position: absolute;"><%= @userInfo[i].firstName %> <%= @userInfo[i].lastName %></h4>
+	  
+	  
+      <div class="col-md-7" >
+	  	<h4><%= blog.title %> </h4>
+        <p style="margin: .1rem .5rem .5rem;  line-height: 1;"><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></p>
+        
 
       </div>
 
     </div>
 </a>
 
-        <hr style="margin-top: 5px; margin-bottom: 5px;">
+        <hr style="margin-top: 5px; margin-bottom: 5px; border-top: 1px solid #252525;">
 
 
         <% end %>
@@ -48,59 +45,7 @@
         effect : "fadeIn"
     });
 	
-	$("img").load(function(){
-	  $(".CenterIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
-		});
-	});
 	
-	$( window ).resize(function() {
-		$(".CenterIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left", (((parW - childW) / 2) / parW) * 100 + "%" );
-		});
-	});
-	
-	$("img").load(function(){
-	  $(".LeftIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left", "0px");
-		});
-	});
-	
-	$( window ).resize(function() {
-		$(".LeftIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left", "0px" );
-		});
-	});
-	
-	$("img").load(function(){
-	  $(".RightIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%");
-		});
-	});
-	
-	$( window ).resize(function() {
-		$(".RightIMG").each(function(){
-			var childImg = $(this);
-			var childW = childImg.width();
-			var parW = childImg.parent().width();
-			childImg.css("margin-left",  ((parW - childW) / parW) * 100 + "%" );
-		});
-	});
 	
 </script>
 

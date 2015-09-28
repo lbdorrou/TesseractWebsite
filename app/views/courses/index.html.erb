@@ -1,45 +1,43 @@
-<div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
-  <div class="row dark" style="overflow: hidden; padding-left: 0;">
-    <h1 class="center" >COURSES</h1>
-  </div>
-
-
-
-
-
-
-    <% @courses.each do |courseSet| %>
+<div class="row transparent full" style="overflow: hidden; padding-left: 20px; padding-right: 20px">
+  <% @courses.each do |courseSet| %>
 	<% if !courseSet.empty? %>
-        <div class="row transparent" style=" overflow: hidden; padding: 0">
-          <h1 class="blackBack"><%= courseSet.first.college %></h1>
-        </div>
 
-      <div class="row transparent">
-        <% courseSet.each do |course| %>
+        <div class="row transparent" style="padding-left: 20px; padding-right: 20px; margin-bottom: 1%;  margin-top: 20px;background-color: RGBA(150,150,150,0.1);">
+            <h1 class="blackBack"><%= courseSet.first.college %></h1>
+        
 
+      <div class="row ">
+
+         <% courseSet.each do |course| %>
             <% if course.show or can? :update, course %>
-                <a href="<%= course_path(course) %>">
-                  <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 hoverDiv" style=" overflow: hidden; height: 40vh; padding: 10px 10px 10px 10px; ">
-                    <div  style="height: 100%; border: solid 1px #000; overflow: hidden" ><%= image_tag course.mainImg.url, alt: "", lazy: true, :class => "fullImg "  + course.img0Class %></div>
-                    <h2 class="center" style="position: absolute; top: 15%;"><%= course.title %></h2>
 
-                    <h4 class="center" style=" position: absolute; bottom: 20px;">read more     <i class="fa fa-angle-right"></i></h4>
-                    <% if !course.show %>
-                        <h4  class="text-center whiteBack" style="top: 30%; position: absolute;">HIDDEN</h4>
-                    <% end %>
+            <a class="projectLinks" href="<%= course_path(course) %>">
+                <div class="gridParent" >
+				<% if !course.show %>
+				  <div class="gridContent redDiagonal">
+			  	<% else %>
+			  		<div class="gridContent diagonal">
+                  <% end %>
+					
+					
+						 <%= image_tag course.mainImg.url(:thumb), alt: "", lazy: true ,:class => "img-responsive" %>
+						 <h4 style="margin: .1rem .5rem .1rem"><%= course.title %></h4>
+						 <p style="margin: .1rem .5rem .5rem;  line-height: 1;"><%= course.courseID%></p>
 
-                  </div>
-                </a>
-            <% end %>
+					</div>
+                 
+				
+                </div>
+            </a>
+
         <% end %>
 
+      <% end %>
       </div>
-	<% end %>
+	  </div>
+          <% end %>
     <% end %>
 
-
-
-  
 </div>
 <script>
     $("img").lazyload({

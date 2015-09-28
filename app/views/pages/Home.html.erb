@@ -1,124 +1,124 @@
-<div class="row transparent" style="  padding-top: 20px;  display: flex; align-items: center;">
- 
-    <div class="col-md-4 hidden-sm hidden-xs" style="padding-right: 0px"  > 
-	
-	
-		
-	  <video   style="padding: 4px;width: 100%;" loop autoplay preload="auto">
-		<source id='mp4'
-		src="<%= asset_path ('testVideo.mp4') %>"
-		type='video/mp4'>
-		
-	  </video>
-		<img class="" style="position: absolute; top: 0px; width: 100%; " src="<%= asset_path ('overlayVideo.png') %>">
-		
-	
-	
-		
 
-		</div>
-	<div class="col-md-8 col-sm-12" style="position: relative;">
-		<img class="img-responsive "  src="<%= asset_path ('bannerNewStudio.png') %>">
-		
+<div class="row transparent" style="padding-top: 20px; ">
+	<div class='col-lg-3 col-md-2'></div>
+	<div class="col-lg-6 col-md-8 col-sm-12">
+		<img class="img-responsive "  style="margin:auto;"src="<%= asset_path ('bannerStudio.gif') %>">
 	</div>
   
 </div>
 
+<div class="row transparent" style="padding-top: 20px; padding-right: 20px">
+	<h1 class="blackBack"> <a href='/about' class="headerLinks">ABOUT US</a></h1>
+	
+	<div class="col-lg-6 col-md-12">
+		<section>
+			<h4 style="color: white">
+			"Tell me and I forget, teach me and I may remember, involve me and I learn."<br />
+			&#8195;-Benjamin Franklin
+			</h4>	
+		</section>
+		
+			<p style="color: white">
+			Tesseract is a game development studio housed at the University of Arkansas and headed 
+			by Professor David Fredrick of the Humanities department. At our core, Tesseract brings together undergraduate and graduate students from a variety of 
+			disciplines to give them valuable experience in the game development process. The idea of students 
+			developing coursework for other students is a unique one and gives us an incredible source of 
+			feedback on our projects. 
+			</p>
+			<h4 > <a href='/about' class="headerLinks">Meet the Team  <i class="fa fa-arrow-circle-right"></i></a></h4>
+
+	</div>
+	<div class="col-lg-6 col-md-12 col-xs-12">
+	
+		
+		<div class="embed-responsive embed-responsive-16by9" >
+		  <iframe  class="embed-responsive-item" width="1280" height="720" src="https://www.youtube.com/embed/xr6bEu86l34?rel=0&amp;showinfo=0" allowfullscreen></iframe>
+		</div>
+		
+	</div>
+	
+</div>
 
 
-<div class="row transparent " style="overflow: hidden; padding-bottom: 20px" >
-	<h1 class="blackBack">FEATURED PROJECTS</h1>
-  <div class="owl-carousel third" id="showCase">
+<div class="row transparent " style="overflow: hidden; margin: 20px; background-color: RGBA(150,150,150,0.1)" >
+	<h1 class="blackBack"><a href='/projects' class="headerLinks">FEATURED PROJECTS</a></h1>	
+				
+  <div class="owl-carousel" id="showCase" style="padding-right: 20px;">
 
     <% @show.each do |item| %>
-        <a href="<% if item.is_a?(Project)%><%= project_path(item)%><% else %><%= course_path(item)%><% end %>">
-        <div class="item third loading " style="overflow: hidden; " >
-
-
-          <img class="owl-lazy <%= item.img0Class %>" style="height: 120%; width: auto" data-src="<%= item.mainImg %>"  alt="">
-
-          <h2 class="center " style="position: absolute; top: 60px;"><%= item.title %></h2>
-          <h4 class="center hoverDiv" style=" position: absolute; bottom: 10px;">Learn more     <i class="fa fa-angle-right"></i></h4>
-
+        <a class="projectLinks" href="<% if item.is_a?(Project)%><%= project_path(item)%><% else %><%= course_path(item)%><% end %>">
+        <div class="item" style="overflow: hidden;" >
+		
+			<img class="owl-lazy " data-src="<%= item.mainImg.url(:thumb) %>"  alt="">
+			
+			
+			<h4 style="margin: .1rem 0 .1rem"><%= item.title %></h4>
+				<p style="margin: .1rem 0 .5rem;  line-height: 1;"><% if item.is_a?(Project)%><%= item.category %><% else %><%= item.college%><% end %></p>
         </div>
         </a>
 
 
     <% end %>
   </div>
+	<h4 > <a href='/projects' class="headerLinks">View All   <i class="fa fa-arrow-circle-right"></i></a></h4>
+
 </div>
 
 		
-<div class="row transparent" style="padding: 0;">
-	
-	
-	<div class="col-md-12 col-lg-4 ">
-    	<h2 class="blackBack">ABOUT US</h2>
-			<img  src="<%= asset_path('aboutus.png') %>"  style="width: 100%"></img>
-		  
-			<p class="center" ><%= Rails.application.config.x.displayOptions.aboutText %></p>		
-		 
-	  </div>
-		
-  <div class="col-md-12 col-lg-4 ">
-    <h2 class="blackBack">NEWS</h2>
+<div class="row transparent"  >
+<div class="col-md-12 col-lg-5" style="padding-left: 0; ">
+	<div class="row transparent" style="padding-right: 20px; margin-bottom: 20px; background-color: RGBA(150,150,150,0.1); ">
+  
+	  <h3 class="blackBack" style="padding-left: 0"><a href='/news' class="headerLinks">LATEST NEWS</a></h3>
     <% @news.each_with_index do |blog, i| %>
-        <a class="news" href="<%= blog_path(blog) %>">
-          <div class="row whiteBack hoverDiv" style=" overflow: hidden; padding-left: 0">
-            <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
-              <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true, class: 'lazyImg', style: "width: 100%;" ) %></div>
-              <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
-            </div>
-            <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
-              <h2 ><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></h2>
-              <p><%= blog.tagLine %></p>
-
+	  <a class="projectLinks" href="<%= blog_path(blog) %>">
+            <div class="col-md-12" style="height: auto; padding: 10px 10px 10px 10px;  ">
+              <div><%= image_tag(blog.mainImg.url(:medium),  style: "width: 100%;" ) %></div>
+            	<h4 style="margin: .1rem 0 .1rem"><%= blog.title %></h4>
+                <p style="margin: .1rem 0 .5rem;  line-height: 1;"><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></p>
+				
+				<p style="margin: .1rem 0 .5rem;  line-height: 1;"><%=blog.tagLine %></p>
 
             </div>
-
-          </div>
-        </a>
 
         <hr style="margin-top: 5px; margin-bottom: 5px;  border: 0">
-
+	</a>
 
 
     <% end %>
+	<h4 > <a href='/news' class="headerLinks">View All   <i class="fa fa-arrow-circle-right"></i></a></h4>
   </div>
 		
-
-  	<div class="col-md-12 col-lg-4 ">
-    	<h2 class="blackBack">DEVELOPMENT BLOGS</h2>
+  </div>
+  <div class="col-md-12 col-lg-7" >
+  <div class="row greyTransparent" style="padding-left: 20px; padding-right: 20px; margin-bottom: 20px;">
+  	
+		<h3 class="blackBack" style="padding-left: 0"><a href='/blog' class="headerLinks">STUDIO BLOG</a></h3>
 		<% @blogs.each_with_index do |blog, i| %>
-        <a class="news" href="<%= blog_path(blog) %>">
-          <div class="row hoverDiv whiteBack" style=" overflow: hidden; padding-left: 0">
-            <div class="col-md-9" style="height: auto; padding: 10px 10px 10px 10px;  ">
-              <div style="max-height: 200px; border: solid 1px #e5e5e5;overflow: hidden;"><%= image_tag(blog.mainImg.url, lazy: true , class: 'lazyImg', style: "width: 100%;" ) %></div>
-              <h2 class="center" style="margin-top: -10%; position: relative;"><%= blog.title %> </h2>
-            </div>
-            <div class="col-md-3" style="height: 200px; padding: 10px 10px 10px 10px; ">
-              <h2 ><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></h2>
-              <p><%= blog.tagLine %></p>
-
-            </div>
-
-          </div>
-        </a>
-
-        <hr style="margin-top: 5px; margin-bottom: 5px; border: 0">
-
-
-
+			<% if i == 0 || i == 2 %>
+				 <div class="row transparent" style="padding: 0;">
+			 <% end %>
+       
+		  <div class="col-md-6" style="height: auto; padding: 10px 10px 10px 10px;  ">
+			<a class="projectLinks" href="<%= blog_path(blog) %>">
+              <div><%= image_tag(blog.mainImg.url(:thumb), style: "width: 100%;" ) %></div>
+            	<h4 style="margin: .1rem 0 .1rem"><%= blog.title %></h4>
+                <p style="margin: .1rem 0 .5rem;  line-height: 1;"><%= blog.date.strftime("%B") %> <%= blog.date.strftime("#{blog.date.day.ordinalize}") %> <%= blog.date.strftime("%Y") %></p>
+	
+		</a>
+	</div>
+	<% if i == 1 || i == 3 %>
+        	<hr style="margin-top: 5px; margin-bottom: 5px;  border: 0">
+			</div>
+		<% end %>
     <% end %>
+	 <h4 > <a href='/blog' class="headerLinks">View All   <i class="fa fa-arrow-circle-right"></i></a></h4>
 	  </div>
-  
+	 
+  </div>
 				
   </div>
-		
-		
-		
-		
-		
+  		
 		
 		
 
@@ -133,23 +133,10 @@
 <script>
     $(document).ready(function(){
 
-
-
-        $('#mainBanner').owlCarousel({
-            autoplaySpeed: 1000,
-            navSpeed: 1000,
-            items: 1,
-            lazyLoad:true,
-            loop:true,
-            margin:0,
-            autoplay:true,
-            autoplayTimeout:5000
-
-        });
         $('#showCase').owlCarousel({
             mouseDrag: false,
             touchDrag:false,
-
+					
             nav: true,
             navSpeed: 1000,
             responsiveClass:true,
@@ -228,4 +215,5 @@
 	
 	
 </script>
+				  
 

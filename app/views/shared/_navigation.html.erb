@@ -1,7 +1,7 @@
 <div class="links stickem">
-  <a href='/' style="padding-left: 0px;"><img class='img-responsive' src=<%= asset_path "NavLogo.png" %>></a>
+  <a href='/' style="padding-left: 0px;"><img class='img-responsive' src=<%= asset_path "NavLogo.gif" %>></a>
   <hr>
-  <a href='/projects' class="navLinks">PROJECTS</a>
+	<a href='/projects' class="navLinks">PROJECTS</a>
   <br><a href='/classes' class="navLinks">COURSES</a>
   <br><a href='/news' class="navLinks">NEWS</a>
   <br><a href='/about' class="navLinks">ABOUT US</a>
@@ -9,7 +9,7 @@
 
   <hr>
 
-  <a href='/blog' class="navLinks">DEV BLOGS</a>
+  <a href='/blog' class="navLinks">STUDIO BLOG</a>
 
   <% if Rails.application.config.x.displayOptions.enableSocialFacebook %>
       <br><a href="<%= Rails.application.config.x.displayOptions.facebook %>" class="socialLinks" style=" padding-left: 30px;"><i class="fa fa-facebook"></i>  </a>
@@ -69,4 +69,4 @@
         });
 
     });
-</script>
+	  </script>

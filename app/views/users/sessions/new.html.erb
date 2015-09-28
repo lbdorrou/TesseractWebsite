@@ -1,21 +1,26 @@
+
 <div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
-  <div class="centerPage">
-
-    <div style="overflow: hidden; height:25vh; width: 832px;">
-      <img  src="/assets/welcome.jpg" style="width: 832px; "></img>
+  <div class="row greyTransparent diagonal" style=" overflow: hidden; padding-left: 0px;">
+    <div class="col-lg-5 col-md-7 col-sm-12" style="padding: 0">
+     	<img  class="img-responsive" src="<%= asset_path('welcome.jpg') %>"></img>
     </div>
-    <h1 class="center" style="margin-top: -20vh; position: relative;">Log In</h1>
+  </div>
+  
+  <div class="row transparent"  style="border-top: solid 1px #000; ">
+    <h1 style="margin: .1rem .5rem 0rem" >LOG IN</h1>
+  </div>
+  <div class="row transparent"  >
+    <h3 style="margin: 0rem .5rem .5rem" >Internal Use Only!</h3>
+  </div>
+  
+  
+  <div class="row light" style="padding-top: 30px; padding-bottom: 30px; border-top: solid 1px #000;  min-height: 100vh;" >
+  	 
+  
 
-    <div class="row">
-      <div class="col-md-5 floatCenter">
-        <h2>For Internal Use Only</h2>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-5 floatCenter">
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, class: "form-control" ,autofocus: true %>
@@ -39,8 +44,16 @@
 <% end %>
 
 <%= render "users/shared/links" %>
-    </div>
-      </div>
-    </div>
 
+
+        </div>
+        
+        </div>
+
+  
+  
+  
+  
+  
+  </div>
 </div>

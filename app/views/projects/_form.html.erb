@@ -96,14 +96,12 @@
         <div class="form-group">
           <%= f.label "Main Image (Required)" %>
           <%= f.file_field :mainImg , class: "form-control" %>
-		  <%= f.label  "Alignment"  %> <br>
-			  <%= f.select :img0Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	
          
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.mainImg? %>
-        <%= image_tag @project.mainImg.url(:medium), class: "well"  %>
+        <%= image_tag @project.mainImg.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -122,12 +120,12 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img1 , class: "form-control" %>
-          <%= f.select :img1Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>	  
+          	  
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.img1? %>
-        <%= image_tag @project.img1.url(:medium), class: "well"  %>
+        <%= image_tag @project.img1.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -139,12 +137,12 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img2 , class: "form-control" %>
-          <%= f.select :img2Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
+          
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.img2? %>
-        <%= image_tag @project.img2.url(:medium), class: "well"  %>
+        <%= image_tag @project.img2.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -156,12 +154,12 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img3 , class: "form-control" %>
-          <%= f.select :img3Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
+          
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.img3? %>
-        <%= image_tag @project.img3.url(:medium), class: "well"  %>
+        <%= image_tag @project.img3.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -173,12 +171,12 @@
       <div class="col-md-5">
         <div class="form-group">
           <%= f.file_field :img4 , class: "form-control" %>
-          <%= f.select :img4Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
+          
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.img4? %>
-        <%= image_tag @project.img4.url(:medium), class: "well"  %>
+        <%= image_tag @project.img4.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>
@@ -191,12 +189,12 @@
         <div class="form-group">
           <%= f.file_field :img5 , class: "form-control" %>
 
-          <%= f.select :img5Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
+          
         </div>
       </div>
       <div class="col-md-6">
         <% if @project.img5? %>
-        <%= image_tag @project.img5.url(:medium), class: "well"  %>
+        <%= image_tag @project.img5.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>

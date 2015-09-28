@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.save
-    resource.role = 'normal'
+	  resource.role = 'admin'
     resource.show = false
 
     yield resource if block_given?

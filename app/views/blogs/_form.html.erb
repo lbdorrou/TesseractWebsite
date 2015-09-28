@@ -39,12 +39,12 @@
         <div class="form-group">
           <%= f.label "Main Image (Required)" %>
           <%= f.file_field :mainImg , class: "form-control" %>
-			  <%= f.select :img0Class,["CenterIMG","LeftIMG","RightIMG"],{}, class: "form-control" %>
+			
         </div>
       </div>
       <div class="col-md-6">
         <% if @blog.mainImg? %>
-            <%= image_tag @blog.mainImg.url(:medium), class: "well"  %>
+            <%= image_tag @blog.mainImg.url(:thumb), class: "well"  %>
         <% else %>
             <label>NO IMAGE UPLOADED</label>
         <% end %>

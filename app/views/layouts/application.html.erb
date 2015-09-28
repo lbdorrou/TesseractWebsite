@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Tesseract</title>
-  <link rel="shortcut icon" type="image/png" href="/assets/favIcon.png"/>
+  <link rel="shortcut icon" type="image/png" href="<%= asset_path ('favIcon.gif') %>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'Tesseract', media: 'all' %>
+   <%= stylesheet_link_tag    'Uark', media: 'all' %>
   <%= csrf_meta_tags %>
 
 </head>

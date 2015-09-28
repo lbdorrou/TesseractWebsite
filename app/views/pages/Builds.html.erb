@@ -1,15 +1,15 @@
 <div class="row transparent full" style="overflow: hidden; padding-left: 0px; ">
   <div class="row greyTransparent diagonal" style=" overflow: hidden; padding-left: 0px;">
     <div class="col-lg-5 col-md-7 col-sm-12" style="padding: 0">
-     	<img  class="img-responsive" src="<%= asset_path('newProject.jpg') %>"></img>
+     	<img  class="img-responsive" src="<%= asset_path('new.jpg') %>"></img>
     </div>
   </div>
   
   <div class="row transparent"  style="border-top: solid 1px #000; ">
-    <h1 style="margin: .1rem .5rem 0rem" >NEW PROJECT</h1>
+    <h1 style="margin: .1rem .5rem 0rem" >Project Builds</h1>
   </div>
   <div class="row transparent"  >
-    <h3 style="margin: 0rem .5rem .5rem" >Project creation and editing manager</h3>
+    <h3 style="margin: 0rem .5rem .5rem" >Web testing manager</h3>
   </div>
   
   
@@ -19,11 +19,12 @@
 
         <div class="col-md-1"></div>
         <div class="col-md-5">
-           <%= render 'form' %>
-
-
+			<h3>GameBuilds folder</h3>
+           <% @links.each_with_index do |item, i| %>
+				<a href="<%= item %>"><%= @naturalName[i] %></a><br>
+			<% end %>
         </div>
-        
+
         </div>
 
   
