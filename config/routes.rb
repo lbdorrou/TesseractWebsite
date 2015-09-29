@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'about' => 'users#index'
   get 'contact' => 'pages#Contact'
   get 'press' => 'pages#Press'
-  get 'administration' => 'pages#Administration'
+  get 'builds' => 'pages#Builds'
 
 
   get 'pages/Home'

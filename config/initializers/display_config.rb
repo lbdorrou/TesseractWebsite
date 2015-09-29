@@ -22,7 +22,7 @@ Rails.application.config.x.displayOptions.userCategories = ['Leadership', 'Art',
 # Please double check the name of the project/course shown
 # Min 4 , Max 8
 # Order Matters
-Rails.application.config.x.displayOptions.showcase = ['Gallery 5 Museum Curation App','House of the Prince of Naples','Greek and Roman Mythology']
+Rails.application.config.x.displayOptions.showcase = ['PlaceHolder','PlaceHolder2','PlaceHolder Course','TestFile Upload']
 
 # Max number of blogs and news stories each on the front page (I.E  a value of four would mean 4 news stories AND 4 blogs)
 Rails.application.config.x.displayOptions.newsCount = 4
